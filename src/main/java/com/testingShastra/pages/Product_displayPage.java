@@ -1,6 +1,7 @@
 package com.testingShastra.pages;
 
 import java.awt.RenderingHints.Key;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.Keys;
@@ -26,49 +27,64 @@ public class Product_displayPage {
 	@FindBy(css = "span.a-price.aok-align-center.reinventPricePriceToPayMargin.priceToPay")
 	private static WebElement dressproductprice;
 
-	@FindBy(css="div[class=\"a-row\"]>span:nth-child(1)")
+	@FindBy(css = "div[class=\"a-row\"]>span:nth-child(1)")
 	private static WebElement noResultForMsg;
-	
+
 	@FindBy(id = "twotabsearchtextbox")
 	private static WebElement searchBox;
-	
-	@FindBy(css="span.a-price-whole")
+
+	@FindBy(css = "span.a-price-whole")
 	private static List<WebElement> productPrices;
-	
-	@FindBy(css="div.a-section.s-range-input-container.s-upper-bound")
+
+	@FindBy(css = "div.a-section.s-range-input-container.s-upper-bound")
 	private static WebElement priceSlider;
-	
-	@FindBy(css="button#a-autoid-2-announce")
+
+	@FindBy(css = "button#a-autoid-2-announce")
 	private static WebElement addToCartPrdctPageButtn;
-	
-	@FindBy(css="div.a-checkbox.a-checkbox-fancy.s-navigation-checkbox.aok-float-left>label")
+
+	@FindBy(css = "div.a-checkbox.a-checkbox-fancy.s-navigation-checkbox.aok-float-left>label")
 	private static List<WebElement> brandFilters;
-	
-	@FindBy(css="h2[aria-label=\"Classmate Pulse 6 Subject Spiral Notebook - Pack of 1 | Single Line | 300 Pages | A4 - 29.7cm x 21.0cm | Attractive Cover Designs | Soft Cover | Notebooks for College Students\"]")
+
+	@FindBy(css = "h2[aria-label=\"Classmate Pulse 6 Subject Spiral Notebook - Pack of 1 | Single Line | 300 Pages | A4 - 29.7cm x 21.0cm | Attractive Cover Designs | Soft Cover | Notebooks for College Students\"]")
 	private static WebElement classmateNotebookToSelect;
-	
-	@FindBy(css="span#productTitle")
+
+	@FindBy(css = "span#productTitle")
 	private static WebElement classmateNotebookName;
-	
-	@FindBy(css="span.a-size-medium.a-color-success")
+
+	@FindBy(css = "span.a-size-medium.a-color-success")
 	private static WebElement inStockMsg;
-	
-	@FindBy(css="div.a-row>h2")
+
+	@FindBy(css = "div.a-row>h2")
 	private static WebElement customerReview;
 	
 	@FindBy(css="div.a-section.a-spacing-none.a-spacing-top-small.s-title-instructions-style")
 	private static List<WebElement> listOfNotebookProduct;
 	
-	@FindBy(css= "span[class=\"a-declarative\"] span[class=\"a-size-small a-color-base\"]")
-	private static WebElement productRating;
 	
 	@FindBy(css="a#breadcrumb-back-link")
 	private static WebElement backToResultLink;
 	
 	@FindBy(css="img[alt=\"Classmate Pulse 6 Subject Spiral Notebook - Pack of 1 | Single Line | 300 Pages | A4 - 29.7cm x 21.0cm | Attractive Cover Designs | Soft Cover | Notebooks for College Students\"]")
 	private static WebElement imageOfProduct;
-	
-	
+
+	@FindBy(css = "h2[aria-label=\"Sponsored Ad - Panasonic 80 cm (32 inches) HD Ready Smart LED Google TV TH32MS660DX (Black)\"] span")
+	private static WebElement TvName;
+
+	@FindBy(css = "div[data-cy=\"price-recipe\"] span[class=\"a-price-whole\"]")
+	private static WebElement TvPrize;
+
+	@FindBy(css = "div.puisg-row h2 ")
+	private static WebElement productsTexts;
+
+	@FindBy(css = "span[class=\"a-declarative\"] span[class=\"a-size-base a-color-base\"]")
+	private static WebElement productRating;
+
+	@FindBy(css = "div[data-cy=\"title-recipe\"] h2[aria-label=\"Sponsored Ad - Panasonic 80 cm (32 inches) HD Ready Smart LED Google TV TH32MS660DX (Black)\"]")
+	private static WebElement product;
+
+	@FindBy(css = "div[data-name=\"RETURNS_POLICY\"] span[class=\"a-size-small a-color-link a-text-normal\"]")
+	private static WebElement productPolicy;
+
 	public void clickOnAddToCart() {
 		waitsFor.visiblityOfElement(addTocartButton);
 		Keyword.scrollwindow(addTocartButton);
@@ -85,22 +101,26 @@ public class Product_displayPage {
 		String price = Keyword.getText(dressproductprice);
 		return price;
 	}
+
 	public String getNoResultMsg() {
 		waitsFor.visiblityOfElement(noResultForMsg);
 		return Keyword.getText(noResultForMsg);
 	}
+
 	public void clearSearchBox(Keys key) {
-		Keyword.cleanTextBox(searchBox,Keys.ENTER);
+		Keyword.cleanTextBox(searchBox, Keys.ENTER);
 	}
+
 	public void getPricesList() {
 		waitsFor.visibilityOfAllElemntMethod(productPrices);
-		List<String> listOfPrices=Keyword.getList(productPrices);
-		
+		List<String> listOfPrices = Keyword.getList(productPrices);
+
 		for (String priceofSingleprdct : listOfPrices) {
 			System.out.println(priceofSingleprdct);
 		}
-		
+
 	}
+
 	public void slideThePriceBar() {
 		waitsFor.elementToBeClickableMethod(priceSlider);
 		try {
@@ -112,62 +132,61 @@ public class Product_displayPage {
 			Keyword.dragAndDrop(priceSlider);
 		}
 	}
-		
+
 	public boolean isAddToCartDisplayOnPrdctPage() {
 		waitsFor.visiblityOfElement(addToCartPrdctPageButtn);
 		return Keyword.isDisplayed(addToCartPrdctPageButtn);
 	}
+
 	public boolean isAddToCartEnableOnPrdctPage() {
 		waitsFor.visiblityOfElement(addToCartPrdctPageButtn);
 		return Keyword.isEnable(addToCartPrdctPageButtn);
 	}
-	
+
 	public void applyBrandFilter(String brandName) {
-        for (WebElement brandFilter : brandFilters) {
-            if (brandFilter.getText().equalsIgnoreCase(brandName)) {
-                waitsFor.visiblityOfElement(brandFilter);
-                brandFilter.click();
-                break;
-            }
-        }
-        // Wait for the filtered results to load
-        waitsFor.visibilityOfAllElemntMethod(brandFilters);
-    }
+		for (WebElement brandFilter : brandFilters) {
+			if (brandFilter.getText().equalsIgnoreCase(brandName)) {
+				waitsFor.visiblityOfElement(brandFilter);
+				brandFilter.click();
+				break;
+			}
+		}
+		// Wait for the filtered results to load
+		waitsFor.visibilityOfAllElemntMethod(brandFilters);
+	}
+
 	public void clickOnClassmateNotebook() {
 		waitsFor.visiblityOfElement(classmateNotebookToSelect);
 		Keyword.scrollwindow(classmateNotebookToSelect);
 		Keyword.clickOn(classmateNotebookToSelect);
 	}
-	
+
 	public void switchToProductWindow(String url) {
 		SwitchWindowfor.switchingWindow(url);
-		
+
 	}
+
 	public String getNameOfClassmateNotebook() {
 		waitsFor.visiblityOfElement(classmateNotebookName);
 		return Keyword.getText(classmateNotebookName);
 	}
+
 	public String getInStockMsg() {
-		
+
 		waitsFor.visiblityOfElement(inStockMsg);
 		return Keyword.getText(inStockMsg);
 	}
+
 	public boolean isCustomerReviewDisplay() {
 		waitsFor.visiblityOfElement(customerReview);
 		return Keyword.isDisplayed(customerReview);
 	}
-	
+
 	public List<String> getNotebookProductList() {
 		waitsFor.visibilityOfAllElemntMethod(listOfNotebookProduct);
-		List<String> listOfNotebookProducts=Keyword.getList(listOfNotebookProduct);
+		List<String> listOfNotebookProducts = Keyword.getList(listOfNotebookProduct);
 		return listOfNotebookProducts;
-		
-		
-	}
-	public String getRating() {
-		waitsFor.visiblityOfElement(productRating);
-		return Keyword.getText(productRating);
-		
+
 	}
 	public void clickOnBackToResultLink() {
 		waitsFor.elementToBeClickableMethod(backToResultLink);
@@ -180,10 +199,17 @@ public class Product_displayPage {
 		return Keyword.isDisplayed(imageOfProduct);
 	}
 	
-	
-	
+	public String getProductDetails() {
+		waitsFor.visiblityOfElement(classmateNotebookName);
+		return Keyword.getText(classmateNotebookName);
+	}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	public String getRating() {
+		String rating = Keyword.getText(productRating);
+		return rating;
+	}
 
 	
-		
-	
+
 }

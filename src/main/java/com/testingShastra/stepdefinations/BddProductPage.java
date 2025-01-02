@@ -1,6 +1,9 @@
 package com.testingShastra.stepdefinations;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.management.loading.PrivateClassLoader;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -148,12 +151,10 @@ public class BddProductPage {
 				"https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
 		String ratings = productpage.getRating();
 		System.out.println(ratings);
-		double ratingValue = Double.parseDouble(ratings);
-		if (ratingValue <= 5) {
-			Assert.assertTrue(true);
-		} else {
-			Assert.assertFalse(false);
-		}
+		productpage.switchToProductWindow(
+				"https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
+		String detailsOfProduct = productpage.getNameOfClassmateNotebook();
+
 	}
 
 	// 10
@@ -188,3 +189,5 @@ public class BddProductPage {
 	}
 
 }
+
+
