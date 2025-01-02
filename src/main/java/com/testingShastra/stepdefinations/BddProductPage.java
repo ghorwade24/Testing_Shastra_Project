@@ -1,6 +1,9 @@
 package com.testingShastra.stepdefinations;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.management.loading.PrivateClassLoader;
 
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -69,68 +72,152 @@ public class BddProductPage {
 	}
 
 	// 4
-	
+
 	@And("Click on desire product")
 	public void clickOnDesireProduct() {
 		Product_displayPage productpage = new Product_displayPage();
 		productpage.clickOnClassmateNotebook();
-		System.out.println("name>>"+Keyword.getTitle());
+		System.out.println("name>>" + Keyword.getTitle());
 
 	}
+
 	@Then("Verify user should navigate to that product page or not")
 	public void verifyUserNavigateToProductPage() {
 		Product_displayPage productpage = new Product_displayPage();
-		productpage.switchToProductWindow("https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
-		String nameOfProduct=productpage.getNameOfClassmateNotebook();
+		productpage.switchToProductWindow(
+				"https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
+		String nameOfProduct = productpage.getNameOfClassmateNotebook();
 		System.out.println(nameOfProduct);
-		String productPageTitle=Keyword.getTitle();
+		String productPageTitle = Keyword.getTitle();
 		System.out.println(productPageTitle);
 		if (nameOfProduct.contains(productPageTitle)) {
 			Assert.assertTrue(true);
 		}
-		
+
 	}
-	
+
 	@Then("Observe is product is in stock Verify add to cart button is enabled or not")
 	public void IsAddToCartButtonIsEnabled() {
 		Product_displayPage productpage = new Product_displayPage();
-		productpage.switchToProductWindow("https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
-		boolean addtocartButtonStatus=false;
+		productpage.switchToProductWindow(
+				"https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
+		boolean addtocartButtonStatus = false;
 		if (productpage.getInStockMsg().equalsIgnoreCase("In stock")) {
-			addtocartButtonStatus=true;
-			
+			addtocartButtonStatus = true;
+
 		}
 		Assert.assertTrue(addtocartButtonStatus);
 
-}
+	}
+
 	@Then("Verify is customer review field is display or not")
 	public void isCustomerReviewIsPresent() {
 		Product_displayPage productpage = new Product_displayPage();
-		productpage.switchToProductWindow("https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
-		boolean customerReviewMsgstatus=productpage.isCustomerReviewDisplay();
+		productpage.switchToProductWindow(
+				"https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
+		boolean customerReviewMsgstatus = productpage.isCustomerReviewDisplay();
 		Assert.assertTrue(customerReviewMsgstatus);
 	}
-	
+
 	@Then("Verify that the search product page displays products related to the search product")
 	public void verifyResultIsRelatedToSearchProduct() {
 		Product_displayPage productpage = new Product_displayPage();
-		List<String> productNameNotebooks=productpage.getNotebookProductList();
-		
+		List<String> productNameNotebooks = productpage.getNotebookProductList();
+
 		for (String productName : productNameNotebooks) {
 			System.out.println(productName);
 			if (productName.contains("Notebook")) {
 				Assert.assertTrue(true);
 			}
-			
+
 		}
-		
+
 	}
+
 	@Then("Verify is product description is same as product details")
 	public void verifyproductDeatilsIsSameAsDescription() {
 		Product_displayPage productpage = new Product_displayPage();
-		productpage.switchToProductWindow("https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
-		String detailsOfProduct=productpage.getNameOfClassmateNotebook();
+		productpage.switchToProductWindow(
+				"https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_5?crid=3KNN7YYS3XJXT&dib=eyJ2IjoiMSJ9.Vil8368OCOMrfb0aFqWxMLZTSMkTn1GmPwTbTXzGKTNEDFNTHtrDhv9-hc29RiJPa2x-5jLePYOo1uqYAPmIb26NZRvsLOiYsvyRwezi0sv683-_fyul3_4qGZ30x_6-ehgaqF0Mm_Jc32yXItvF2BlOed7VSmT2IwV64uYmHp7PaLU3qwTLU3YcppjxaK6a1f_ALxCxqtG-B7MVsx26UwJ9IpQ7mGGk7D1jSN-W4LmfTHoltIhbtLD0-Ydw6jMakpyRxL0BpnIleTnRGXtbXpdcWMlWCwvJsv-j5mrp-sCghOD-7CbTj0mH8hAx1c2-D8jtqp7lWc-zKABpyVz2OfAmLv7XZZBmorMQXgm0Ad8.w9DEAeb7ORO3C0tP_3p5jc7PYQU6v9zMCARkTag8Ws8&dib_tag=se&keywords=notebook&qid=1735742741&s=office&sprefix=notebook%2Coffice-products%2C195&sr=1-5");
+		String detailsOfProduct = productpage.getNameOfClassmateNotebook();
+
+	}
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	@When("User search for valid products")
+	public void searchTheProducTTv() {
+		Product_displayPage productpage = new Product_displayPage();
+		productpage.serchProduct();
+	}
+
+	@Then("Product details should be valid")
+	public void verifyThePrductDetailsShouldBeValid() {
+		Product_displayPage productpage = new Product_displayPage();
+		String actualProductName = "Panasonic 80 cm (32 inches) HD Ready Smart LED Google TV TH32MS660DX (Black)";
+		String actualProductPrice = "15,490";
+		String expectedProductName = productpage.getProductName();
+		String expectedProductPrice = productpage.getProductPrize();
+		Assert.assertEquals(actualProductName, expectedProductName, "Product name does not match.");
+		Assert.assertEquals(actualProductPrice, expectedProductPrice, "Product price does not match.");
+
+	}
+
+	@And("Click on any product")
+	public void clickOnProduct() {
+		Product_displayPage productpage = new Product_displayPage();
+		productpage.clickOnProduct();
+
+	}
+
+	@Then("Cheak the any one product have a rating or not out of 5")
+	public void cheakTheRatingIsOutOfFive() {
+		Product_displayPage productpage = new Product_displayPage();
+		String ratings = productpage.getRating();
+		double ratingValue = Double.parseDouble(ratings);
+		if (ratingValue <= 5) {
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertFalse(false);
+		}
+
+	}
+	@And("Click on electronic type of product")
+	public void clickOnElectronicProduct() {
+		Product_displayPage productpage = new Product_displayPage();
+		productpage.clickOnProduct();
+
+	}
+	@Then("Product have a functionality of 10 days replacement policy ")
+	public void cheakThePolicy() {
+		String ExpectedPolicy="10 days replacement policy";
+		Product_displayPage productpage = new Product_displayPage();
+		String policy=productpage.getPolicy();
+		if(ExpectedPolicy.contains(policy)) {
+			Assert.assertTrue(true);
+		}else {
+			Assert.assertTrue(false);
+		}
+
+	}
+	@And("Observer a desire prouct detail like prize,prouct name ,model")
+	public void getTheProductDetailsFromPageList() {
+		Product_displayPage productpage = new Product_displayPage();
+		ArrayList<String> ProductDeatils=productpage.productDeatilsOnProductPage();
+		System.out.println(ProductDeatils);
 		
 	}
-	
+	@And("Cheak the details of product on product page and product list")
+	public void cheakTheBothDetails() {
+		Product_displayPage productpage = new Product_displayPage();
+		ArrayList<String> productDetail=productpage.productDetails();
+		ArrayList<String> productDetailsOnPage=productpage.productDeatilsOnProductPage();
+		System.out.println(productDetail);
+		System.out.println(productDetailsOnPage);
+		if (productDetail.size() == productDetailsOnPage.size() && productDetail.containsAll(productDetailsOnPage)) {
+		    System.out.println("Both lists contain the same elements.");
+		    
+		} else {
+		    System.out.println("The lists are different.");
+		}
+	}
+
 }

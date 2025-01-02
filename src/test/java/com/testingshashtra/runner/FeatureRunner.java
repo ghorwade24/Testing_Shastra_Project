@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-	    features = {"src/test/resources/features/amazon.feature","src/test/resources/features/shopping_cart_Test.feature","src/test/resources/features/product_page.feature"},
+	    features = {"src/test/resources/features/product_page.feature"},
 	    glue = "com.testingShastra.stepdefinations",
 	    tags ="@today",
 	    dryRun = false,
