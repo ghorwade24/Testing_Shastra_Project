@@ -40,14 +40,19 @@ Scenario: To verify when user click on product details should be same as shown i
 When User search for valid product
 And Click on desire product
 Then Verify is product description is same as product details
-@today
+
 Scenario: To verify the product page should have a out of five rating field of product
 When User search for valid product
 And Click on desire product
 Then Verify is product page have out of five rating field or not
-@today
+
 Scenario: To verify when user click on back to result link user should navigate to search result page.
 When User search for valid product
 And Click on desire product
 And Click on back to result link
 Then Verify is user redirected to serach result page after clicking back to result link or not
+@today
+Scenario: To verify when user click on product image of product should be displayed.
+When User search for valid product
+And Click on desire product
+Then Verify is image displayed on product page or not

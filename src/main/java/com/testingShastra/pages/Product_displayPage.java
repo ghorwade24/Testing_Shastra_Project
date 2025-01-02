@@ -65,6 +65,9 @@ public class Product_displayPage {
 	@FindBy(css="a#breadcrumb-back-link")
 	private static WebElement backToResultLink;
 	
+	@FindBy(css="img[alt=\"Classmate Pulse 6 Subject Spiral Notebook - Pack of 1 | Single Line | 300 Pages | A4 - 29.7cm x 21.0cm | Attractive Cover Designs | Soft Cover | Notebooks for College Students\"]")
+	private static WebElement imageOfProduct;
+	
 	
 	public void clickOnAddToCart() {
 		waitsFor.visiblityOfElement(addTocartButton);
@@ -171,6 +174,10 @@ public class Product_displayPage {
 		Keyword.scrollwindow(backToResultLink);
 		Keyword.moveToElement(backToResultLink);
 		Keyword.clickUsingjavaScript(backToResultLink);
+	}
+	public boolean isProductImageDisplayOnPrdctPage() {
+		waitsFor.visiblityOfElement(imageOfProduct);
+		return Keyword.isDisplayed(imageOfProduct);
 	}
 	
 	

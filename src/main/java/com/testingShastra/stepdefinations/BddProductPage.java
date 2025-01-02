@@ -178,5 +178,13 @@ public class BddProductPage {
 		
 		
 	}
+	@Then("Verify is image displayed on product page or not")
+	public void verifyIsImageDisplayedOrNot() {
+		Product_displayPage productpage = new Product_displayPage();
+		productpage.switchToProductWindow("https://www.amazon.in/Classmate-Premium-Subject-Notebook-Single/dp/B00LZLQ624/ref=sr_1_7?dib=eyJ2IjoiMSJ9.E9FSpV5RCUar9EkL-PeoUaSUBDRFTOjHBGepeqt_r3QZp7Uy5jfITumPxCqsx4_hu66c5CMfjJ6D3gmIIdRKApspXb6yBjW1YjK0_ozyBMnSAMqVuh8-zJYyrwAW_mC6C4Nx_Xg__2mHtIWge2rcX1r-1ojiCu4sRsUqy9dsB69rnmJqxHZ_KvftrVfCdpf5FVWnPtQwAcsTBtzqSQ9GyzWf_sXfln9PsPcfT15kqv7qI3lq2lOs5ZVEbdQ2qSEN6xNs1yZuhlGvKdxZb5nYzEFsAEpLoI0zjqyyukykMWc.AmluN3uM39QgdO7WpYZTjWLxQufczy_cx3Gu3QlFSWs&dib_tag=se&keywords=notebook&qid=1735823464&sr=8-7&th=1");
+		boolean imageStatus= productpage.isProductImageDisplayOnPrdctPage();
+		Assert.assertTrue(imageStatus);
+
+	}
 
 }
