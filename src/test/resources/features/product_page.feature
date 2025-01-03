@@ -1,9 +1,10 @@
 Feature: This feature file contains all product page test cases.
-
+#1
+@today
 Scenario: To verify when user enter number and special charecter in search box its should display no result message.
 When User enter number and special charecter in search box andd hit enter
 Then Verify no result message is displayed or not
-
+#2
 Scenario: To verify when user clear search box and hit enter user should redirected to home page.
 When User search for valid product
 And Clear Search box and hit enter
@@ -53,7 +54,7 @@ When User search for valid product
 And Click on desire product
 And Click on back to result link
 Then Verify is user redirected to serach result page after clicking back to result link or not
-@today
+
 Scenario: To verify when user click on product image of product should be displayed.
 When User search for valid product
 And Click on desire product

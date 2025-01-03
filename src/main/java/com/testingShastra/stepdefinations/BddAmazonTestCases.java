@@ -220,10 +220,16 @@ public class BddAmazonTestCases {
 	@Then("Verify is paste functionality working or not")
 	public void verifyPasteFunctionality() {
 		LoginPage loginpage = new LoginPage();
-		String password = PropertiesFile.getPassword();
-		String enterdPassword = loginpage.getPasswordTextBox().getAttribute("value");
-		Assert.assertEquals(enterdPassword, password);
+	    String password = PropertiesFile.getPassword();  
+	    String enteredPassword = loginpage.getPasswordTextBox().getAttribute("value");  // Get the value from the password field
+	    if (enteredPassword.equals(password)) {
+	        System.out.println("Bug found: Paste functionality is not disabled in the password field.");
+	        Assert.fail("Bug: Paste functionality is enabled, password was pasted into the field.");
+	    } else {
+	        System.out.println("Paste functionality is correctly disabled in the password field.");
+	    }
 	}
+	
 
 	// 15
 	@And("Hit enter key on continue")
